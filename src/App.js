@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { SteppedLineTo } from "react-lineto";
+import { Segment, Grid, GridColumn, GridRow } from "semantic-ui-react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const style = {
+  delay: true,
+  borderColor: "#ddd",
+  borderStyle: "solid",
+  borderWidth: 3
+};
+
+class App extends Component {
+  render() {
+    return (
+      <Grid>
+        <GridRow>
+          <GridColumn width={1} />
+          <GridColumn width={14}>
+            <Segment raised compact className="A">
+              Pellentesque habitant morbi tristique senectus.
+            </Segment>
+            <Segment raised compact className="B" style={{ margin: "10px" }}>
+              Pellentesque habitant morbi tristique senectus.
+            </Segment>
+            <Segment raised compact className="C" style={{ margin: "20px" }}>
+              Pellentesque habitant morbi tristique senectus.
+            </Segment>
+            <SteppedLineTo
+              from="A"
+              to="B"
+              {...style}
+              fromAnchor="left"
+              toAnchor="left"
+            />
+            <SteppedLineTo
+              from="A"
+              to="C"
+              {...style}
+              fromAnchor="left"
+              toAnchor="left"
+            />
+          </GridColumn>
+          <GridColumn width={1} />
+        </GridRow>
+      </Grid>
+    );
+  }
 }
 
 export default App;
